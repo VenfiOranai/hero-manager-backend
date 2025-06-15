@@ -1,9 +1,7 @@
-from datetime import datetime
-
-from pydantic import BaseModel
+from src.controllers.utils.base_api_model import BaseApiModel
 
 
-class GetHeroPowerOutputSchema(BaseModel):
-   id: int
-   name: str
-   hero_id: int
+class GetHeroPowerOutputSchema(BaseApiModel):
+    id: int
+    name: str
+    hero_id: int

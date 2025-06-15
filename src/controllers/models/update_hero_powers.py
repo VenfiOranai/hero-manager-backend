@@ -1,11 +1,12 @@
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict
+from pydantic import ConfigDict
+
+from src.controllers.utils.base_api_model import BaseApiModel
 
 
-class UpdateHeroPowers(BaseModel):
-   model_config = ConfigDict(from_attributes=True)
+class UpdateHeroPowers(BaseApiModel):
+    model_config = ConfigDict(from_attributes=True)
 
-   hero_id: int
-   powers: list[str] | None = None
+    hero_id: int
+    powers: list[str] | None = None
 
 
