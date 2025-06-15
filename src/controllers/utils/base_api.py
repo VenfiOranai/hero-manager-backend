@@ -6,7 +6,7 @@ from src.errors.base import BaseError
 def catch_custom_errors(f: callable):
     def wrapper(*args, **kwargs):
         try:
-            f(*args, **kwargs)
+            return f(*args, **kwargs)
         except BaseError as e:
             abort(e.status_code, message=str(e))
 
