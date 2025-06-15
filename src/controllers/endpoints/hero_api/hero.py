@@ -14,7 +14,7 @@ class HeroApi(BaseApi):
         hero: HeroModel = get_hero(hero_id)
 
         return GetHeroOutputSchema(id=hero.id, name=hero.name, suit_color=hero.suit_color, has_cape=hero.has_cape,
-                                   last_mission=hero.last_mission, is_retired=hero.is_retired), status.HTTP_200_OK
+                                   last_mission=hero.last_mission, is_retired=hero.is_retired).model_dump_json(), status.HTTP_200_OK
 
     def put(self, hero_id: int):
         data = request.get_json()

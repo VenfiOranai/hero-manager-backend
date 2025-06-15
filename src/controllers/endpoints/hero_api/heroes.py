@@ -17,7 +17,7 @@ class HeroesApi(BaseApi):
             has_cape=hero.has_cape,
             last_mission=hero.last_mission,
             is_retired=hero.is_retired,
-        ) for hero in heroes]
+        ).model_dump_json() for hero in heroes]
 
     def post(self):
         pass
