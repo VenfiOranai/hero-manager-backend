@@ -27,8 +27,6 @@ class HeroService:
             power = PowerModel(name=power_name, hero_id=hero.id)
             self.session.add(power)
 
-        self.session.commit()
-        self.session.refresh(hero)
         return hero
 
     def retire_hero(self, hero_id: int) -> None:
@@ -59,8 +57,6 @@ class HeroService:
         for power in hero.powers:
             if power.name not in new_powers_set:
                 self.session.delete(power)
-
-        self.session.commit()
 
     def update_hero_last_mission(self, hero_id: int, last_mission: datetime):
         hero = get_hero(hero_id)

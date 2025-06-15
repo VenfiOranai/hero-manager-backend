@@ -20,6 +20,7 @@ class PowersApi(BaseApi):
 
         hero_powers = UpdateHeroPowers(**request.get_json(force=True))
         hero_service.update_hero_powers(hero_id, hero_powers.powers)
+        session.commit()
 
         return {"message": "Powers updated"}, status.HTTP_200_OK
 

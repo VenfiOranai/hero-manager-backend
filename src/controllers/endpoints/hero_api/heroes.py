@@ -23,4 +23,5 @@ class HeroesApi(BaseApi):
 
     def post(self):
         hero = HeroService(session).create_hero(NewHero(**request.get_json()))
+        session.commit()
         return {'message': 'Created hero successfully', 'id': hero.id}, status.HTTP_201_CREATED
