@@ -1,9 +1,9 @@
 from datetime import datetime
 
-from pydantic import BaseModel
+from src.controllers.utils.base_api_model import BaseApiModel
 
 
-class GetHeroOutputSchema(BaseModel):
+class GetHeroOutputSchema(BaseApiModel):
     id: int
     name: str
     suit_color: str

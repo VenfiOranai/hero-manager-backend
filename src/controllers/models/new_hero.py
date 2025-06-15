@@ -1,8 +1,9 @@
 from datetime import datetime
-from pydantic import BaseModel
+
+from src.controllers.utils.base_api_model import BaseApiModel
 
 
-class NewHero(BaseModel):
+class NewHero(BaseApiModel):
     name: str
     suit_color: str
     has_cape: bool
