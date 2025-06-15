@@ -3,6 +3,7 @@ from src.database.models.hero_model import HeroModel
 from src.database.models.power_model import PowerModel
 from src.controllers.models.new_hero import NewHero
 from src.database.queries.power_queries import get_hero_powers
+from src.errors.data_errors import NotFoundError
 
 
 class HeroService:
@@ -35,7 +36,7 @@ class HeroService:
 
     def update_hero_powers(self, hero_id: int, new_powers: list[str]) -> None:
         if not new_powers:
-            pass
+            raise NotFoundError("There are no new powers to update!")
 
         hero = self.session.query(HeroModel).filter_by(id=hero_id).first()
         hero_powers = get_hero_powers(hero_id)
