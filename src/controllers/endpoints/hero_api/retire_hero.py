@@ -1,6 +1,6 @@
 from flask_api import status
 
-from database.database import session
+from src.database.database import session
 from src.controllers.utils.base_api import BaseApi
 from src.services.hero_service import HeroService
 
