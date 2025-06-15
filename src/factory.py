@@ -1,3 +1,5 @@
+from flask_socketio import SocketIO
+
 from flask import Flask
 
 from src.config import Config
