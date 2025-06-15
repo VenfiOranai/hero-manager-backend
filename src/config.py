@@ -1,2 +1,2 @@
 class Config:
-    CONNECTION_STRING = 'sqlite://data.db'
+    CONNECTION_STRING = 'sqlite:///data.db'
