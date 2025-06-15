@@ -44,7 +44,7 @@ class HeroService:
         if not new_powers:
             raise NotFoundError("There are no new powers to update!")
 
-        hero = get_hero(hero_id)
+        get_hero(hero_id) # Validates if the hero exists
         hero_powers = get_hero_powers(hero_id)
 
         existing_powers = {power.name for power in hero_powers}
@@ -53,7 +53,7 @@ class HeroService:
         for power_name in new_powers_set - existing_powers:
             self.session.add(PowerModel(name=power_name, hero_id=hero_id))
 
-        for power in hero.powers:
+        for power in hero_powers:
             if power.name not in new_powers_set:
                 self.session.delete(power)
 
