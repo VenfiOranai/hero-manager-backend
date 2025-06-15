@@ -30,10 +30,9 @@ class HeroService:
         return hero
 
     def retire_hero(self, hero_id: int) -> None:
-        hero = self.session.query(HeroModel).filter_by(id=hero_id).first()
-        if hero:
-            hero.is_retired = True
-            self.session.commit()
+        hero = get_hero(hero_id)
+        hero.is_retired = True
+        self.session.commit()
 
     def get_hero_by_id(self, hero_id: int) -> HeroModel:
         return get_hero(hero_id)
