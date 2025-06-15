@@ -1,4 +1,5 @@
-# services.py
+from datetime import datetime
+
 from src.controllers.models.hero_filters import HeroFilters
 from src.database.models.hero_model import HeroModel
 from src.database.models.power_model import PowerModel
@@ -60,3 +61,7 @@ class HeroService:
                 self.session.delete(power)
 
         self.session.commit()
+
+    def update_hero_last_mission(self, hero_id: int, last_mission: datetime):
+        hero = get_hero(hero_id)
+        hero.last_mission = last_mission
