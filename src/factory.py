@@ -2,6 +2,7 @@ from flask import Flask
 
 from src.config import Config
 from src.controllers.router import make_routes
+from src.database.database import Base, engine
 
 
 def create_app(config: Config = Config) -> Flask:
@@ -10,5 +11,7 @@ def create_app(config: Config = Config) -> Flask:
     app.config.from_object(config)
 
     make_routes(app)
+
+    Base.metadata.create_all(engine)
 
     return app

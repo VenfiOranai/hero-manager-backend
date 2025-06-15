@@ -3,14 +3,14 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 
 from src.config import Config
 
-_Base = declarative_base()
+Base = declarative_base()
 
 
-class SqlModel(_Base):
+class SqlModel(Base):
     id = Column(Integer, primary_key=True)
 
 
-_engine = create_engine(Config.CONNECTION_STRING)
-_session_maker = sessionmaker(_engine)
+engine = create_engine(Config.CONNECTION_STRING)
+_session_maker = sessionmaker(engine)
 
 session = _session_maker()
