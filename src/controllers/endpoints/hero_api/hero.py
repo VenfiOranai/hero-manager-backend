@@ -15,7 +15,7 @@ class HeroApi(BaseApi):
         hero: HeroModel = get_hero(hero_id)
 
         data = GetHeroOutputSchema(id=hero.id, name=hero.name, suit_color=hero.suit_color, has_cape=hero.has_cape,
-                                   last_mission=hero.last_mission, is_retired=hero.is_retired).model_dump_json()
+                                   last_mission=hero.last_mission, is_retired=hero.is_retired).model_dump()
         # socketio_app.emit(f'shitttttt!!! {data}')
 
         return data, status.HTTP_200_OK

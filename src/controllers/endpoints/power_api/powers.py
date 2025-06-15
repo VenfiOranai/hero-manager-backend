@@ -13,7 +13,7 @@ from src.socketio import socketio_app
 
 class PowersApi(BaseApi):
     def get(self, hero_id: int):
-        return [GetHeroPowerOutputSchema(id=power.id, name=power.name, hero_id=power.hero_id).model_dump_json()
+        return [GetHeroPowerOutputSchema(id=power.id, name=power.name, hero_id=power.hero_id).model_dump()
                 for power in get_hero_powers(hero_id)], status.HTTP_200_OK
 
     def put(self, hero_id: int):

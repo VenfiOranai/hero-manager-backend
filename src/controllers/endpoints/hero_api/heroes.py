@@ -19,7 +19,7 @@ class HeroesApi(BaseApi):
             has_cape=hero.has_cape,
             last_mission=hero.last_mission,
             is_retired=hero.is_retired,
-        ).model_dump_json() for hero in heroes], status.HTTP_200_OK
+        ).model_dump() for hero in heroes], status.HTTP_200_OK
 
     def post(self):
         hero = HeroService(session).create_hero(NewHero(**request.get_json()))
