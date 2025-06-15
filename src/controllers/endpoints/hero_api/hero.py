@@ -7,7 +7,6 @@ from src.database.database import session
 from src.database.models import HeroModel
 from src.database.queries.hero_queries import get_hero
 from src.services.hero_service import HeroService
-from src.socketio import socketio_app
 
 
 class HeroApi(BaseApi):
@@ -16,7 +15,6 @@ class HeroApi(BaseApi):
 
         data = GetHeroOutputSchema(id=hero.id, name=hero.name, suit_color=hero.suit_color, has_cape=hero.has_cape,
                                    last_mission=hero.last_mission, is_retired=hero.is_retired).model_dump()
-        # socketio_app.emit(f'shitttttt!!! {data}')
 
         return data, status.HTTP_200_OK
 
