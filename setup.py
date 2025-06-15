@@ -12,5 +12,6 @@ setup(
         'Flask-RESTful',
         'Flask-API',
         'pydantic',
+        'werkzeug==2.2.0',
     ]
 )
