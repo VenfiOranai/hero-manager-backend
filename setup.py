@@ -8,8 +8,9 @@ setup(
     author='America',
     install_requires=[
         'sqlalchemy==1.4.54',
-        'flask',
+        'flask==2.2.2',
         'Flask-RESTful',
         'Flask-API',
+        'pydantic',
     ]
 )
