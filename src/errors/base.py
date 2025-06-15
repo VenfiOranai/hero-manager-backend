@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 
 class BaseError(Exception, ABC):
-    @abstractmethod
     @property
+    @abstractmethod
     def status_code(self) -> int:
         pass
