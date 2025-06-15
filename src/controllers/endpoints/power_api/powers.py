@@ -1,6 +1,6 @@
 from flask import request
 
-from database.database import session
+from src.database.database import session
 
 from src.controllers.models.update_hero_powers import UpdateHeroPowers
 from src.controllers.utils.base_api import BaseApi
