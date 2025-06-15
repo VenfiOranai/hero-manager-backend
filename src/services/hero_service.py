@@ -1,7 +1,9 @@
 # services.py
+from src.controllers.models.hero_filters import HeroFilters
 from src.database.models.hero_model import HeroModel
 from src.database.models.power_model import PowerModel
 from src.controllers.models.new_hero import NewHero
+from src.database.queries.hero_queries import get_hero, get_heroes
 from src.database.queries.power_queries import get_hero_powers
 from src.errors.data_errors import NotFoundError
 
@@ -34,11 +36,17 @@ class HeroService:
             hero.is_retired = True
             self.session.commit()
 
+    def get_hero_by_id(self, hero_id: int) -> HeroModel:
+        return get_hero(hero_id)
+
+    def get_heroes_by_filters(self, filters: HeroFilters) -> list[HeroModel]:
+        return get_heroes(filters.suit_color, filters.has_cape, filters.name)
+
     def update_hero_powers(self, hero_id: int, new_powers: list[str]) -> None:
         if not new_powers:
             raise NotFoundError("There are no new powers to update!")
 
-        hero = self.session.query(HeroModel).filter_by(id=hero_id).first()
+        hero = get_hero(hero_id)
         hero_powers = get_hero_powers(hero_id)
 
         existing_powers = {power.name for power in hero_powers}
