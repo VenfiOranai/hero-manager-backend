@@ -1,4 +1,3 @@
-# services.py
 from src.controllers.models.hero_filters import HeroFilters
 from src.database.models.hero_model import HeroModel
 from src.database.models.power_model import PowerModel
