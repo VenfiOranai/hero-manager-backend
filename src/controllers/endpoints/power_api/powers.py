@@ -8,6 +8,7 @@ from src.controllers.models.update_hero_powers import UpdateHeroPowers
 from src.controllers.utils.base_api import BaseApi
 from src.database.queries.power_queries import get_hero_powers
 from src.services.hero_service import HeroService
+from src.socketio import socketio_app
 
 
 class PowersApi(BaseApi):
