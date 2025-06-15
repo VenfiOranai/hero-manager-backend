@@ -13,5 +13,6 @@ setup(
         'Flask-API',
         'pydantic',
         'werkzeug==2.2.2',
+        'flask-socketio==5.5.1'
     ]
 )
