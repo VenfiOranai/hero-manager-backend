@@ -1,5 +1,6 @@
 from flask import request
 from flask_api import status
+from src.socketio import broadcast_hero_created
 
 from src.controllers.endpoints.hero_api.output_schemas import GetHeroOutputSchema
 from src.controllers.models.hero_filters import HeroFilters
@@ -24,4 +25,5 @@ class HeroesApi(BaseApi):
     def post(self):
         hero = HeroService(session).create_hero(NewHero(**request.get_json()))
         session.commit()
+        broadcast_hero_created(hero.to_dict())
         return {'message': 'Created hero successfully', 'id': hero.id}, status.HTTP_201_CREATED
