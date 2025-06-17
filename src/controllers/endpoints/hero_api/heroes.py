@@ -25,5 +25,13 @@ class HeroesApi(BaseApi):
     def post(self):
         hero = HeroService(session).create_hero(NewHero(**request.get_json()))
         session.commit()
-        broadcast_hero_created(hero.to_dict())
+        hero_dict = GetHeroOutputSchema(
+            id=hero.id,
+            name=hero.name,
+            suit_color=hero.suit_color,
+            has_cape=hero.has_cape,
+            last_mission=hero.last_mission,
+            is_retired=hero.is_retired,
+        ).model_dump()
+        broadcast_hero_created(hero_dict)
         return {'message': 'Created hero successfully', 'id': hero.id}, status.HTTP_201_CREATED
